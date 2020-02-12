@@ -145,12 +145,10 @@ function blogMaker(title, date, p1, p2, p3){
   let paragraph2 = document.createElement('p');
   let paragraph3 = document.createElement('p');
   let spanEl = document.createElement('span');
-  spanEl.classList.add('expandButton');
-  spanEl.addEventListener('click', (e) => {
-      //articleContainer.classList.add('article-open');
-      articleContainer.classList.toggle('article-open');
-      console.log('clicked!');
-  });
+  spanEl.classList.add('.expandButton');
+
+
+  
 
   //in this section we are setting up our HTML structure
   articleContainer.appendChild(h2Headings);
@@ -163,6 +161,14 @@ function blogMaker(title, date, p1, p2, p3){
   paragraph1.textContent = p1;
   paragraph2.textContent = p2;
   paragraph3.textContent = p3;
+
+  spanEl.addEventListener('click', (e) => {
+    //articleContainer.classList.add('article-open');
+    //articleContainer.toggle('toggle-on');
+    articleContainer.classList.toggle('article-open', false);
+    //articleContainer.classList.toggle('close');
+    console.log('clicked!');
+  });
 
   return articleContainer;
 }
