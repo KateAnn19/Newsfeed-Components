@@ -138,9 +138,9 @@ function blogMaker(title, date, p1, p2, p3){
   articleContainer.classList.add('article');
   let h2Headings = document.createElement('h2');
   h2Headings.textContent = title; 
-  let paragraph = document.createElement('p');
-  paragraph.classList.add('date');
-  paragraph.textContent = date;
+  let paragraph0 = document.createElement('p');
+  paragraph0.classList.add('date');
+  paragraph0.textContent = date;
   let paragraph1 = document.createElement('p');
   let paragraph2 = document.createElement('p');
   let paragraph3 = document.createElement('p');
@@ -158,7 +158,7 @@ function blogMaker(title, date, p1, p2, p3){
   articleContainer.appendChild(paragraph2);
   articleContainer.appendChild(paragraph3);
   articleContainer.appendChild(spanEl);
-  console.log('I exist!');
+  //console.log('I exist!');
 
   paragraph1.textContent = p1;
   paragraph2.textContent = p2;
@@ -190,7 +190,7 @@ function blogMaker(title, date, p1, p2, p3){
 data.forEach((content) => {
   //let newPost = blogMaker(arrayItem);
   console.log(content);
-  blogMaker(content.title, content.firstParagraph, content.secondParagraph, content.thirdParagraph);
+  getArticles.appendChild(blogMaker(content.title, content.date, content.paragraph1, content.paragraph2, content.paragraph3));
   //getArticles.appendChild(arrayItem);
 });
 
