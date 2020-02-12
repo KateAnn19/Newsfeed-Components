@@ -101,6 +101,7 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
+
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
@@ -112,3 +113,130 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+let getArticles = document.querySelector('.articles');
+
+//console.log(getArticles);
+
+
+// Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+  
+//   <div class="article">
+//     <h2>{title of the article}</h2>
+//     <p class="date">{date of the article}</p>
+
+//     {three separate paragraph elements}
+
+//     <span class='expandButton'></span>
+//   </div>
+
+//   Hint: You will need to use createElement more than once here!
+
+function blogMaker(title, date, p1, p2, p3){
+  let articleContainer = document.createElement('div');
+  articleContainer.classList.add('article');
+  let h2Headings = document.createElement('h2');
+  h2Headings.textContent = title; 
+  let paragraph = document.createElement('p');
+  paragraph.classList.add('date');
+  paragraph.textContent = date;
+  let paragraph1 = document.createElement('p');
+  let paragraph2 = document.createElement('p');
+  let paragraph3 = document.createElement('p');
+  let spanEl = document.createElement('span');
+  spanEl.classList.add('expandButton');
+  spanEl.addEventListener('click', (e) => {
+      //articleContainer.classList.add('article-open');
+      articleContainer.classList.toggle('article-open');
+      console.log('clicked!');
+  });
+
+  //in this section we are setting up our HTML structure
+  articleContainer.appendChild(h2Headings);
+  articleContainer.appendChild(paragraph1);
+  articleContainer.appendChild(paragraph2);
+  articleContainer.appendChild(paragraph3);
+  articleContainer.appendChild(spanEl);
+  console.log('I exist!');
+
+  paragraph1.textContent = p1;
+  paragraph2.textContent = p2;
+  paragraph3.textContent = p3;
+
+  return articleContainer;
+}
+
+//console.log(blogMaker("This is my blog", '12-3-19', "hello", "friend", "hi"));
+
+
+// .map
+// We know that .map returns a new array with the items transformed (by our callback). We can then do whatever we please with this array.
+
+
+// let newComponents = data.map((arrayItem) => {
+//   let newBlog = blogMaker(title, date, content);
+
+//   // Remember, we always need to return something when we use .map
+//   return newBlog;
+// });
+
+//console.log(newComponents);
+
+
+
+// Now that we have an array of DOM elements (components), we can do whatever we’d like with them. We can wait to add the components to the DOM, or we can manipulate them further, the sky is the limit! Let’s add them to the DOM now, using .forEach
+
+data.forEach((content) => {
+  //let newPost = blogMaker(arrayItem);
+  console.log(content);
+  blogMaker(content.title, content.firstParagraph, content.secondParagraph, content.thirdParagraph);
+  //getArticles.appendChild(arrayItem);
+});
+
+
+
+// const data = [
+//   "Button One",
+//   "Button Two",
+//   "Button Three",
+//   "Button Four"
+// ]
+
+
+
+// newComponents.forEach(component => {
+//   parent.appendChild(component);
+// });
+
+
+
+// function buttonCreator(buttonText){
+//   const button = document.createElement('button');
+
+//   button.textContent = buttonText;
+
+//   button.classList.add('button');
+
+//   button.addEventListener('click', (e) => {
+//       console.log('clicked!');
+//   });
+
+//   return button;
+// }
+
+// let firstButton = buttonCreator('Button 1');
+
+// let secondButton = buttonCreator('Button 2');
+
+// parent.appendChild(firstButton);
+// parent.appendChild(secondButton);
+
+// Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+
+//   Step 3: return the entire component.
+
+//   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+
+//   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+
