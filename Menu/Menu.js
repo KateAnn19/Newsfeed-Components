@@ -19,6 +19,8 @@ let menuItems = [
     </ul>
   </div>
 
+  
+
   The function takes an array as its only argument.
 
   Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
@@ -33,3 +35,52 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+let bigOlMenuContainer = document.querySelector('.header');
+console.log(bigOlMenuContainer);
+
+
+
+function fancyMenu(fancyArray){
+  let firstDivWithMenuClass = document.createElement('div');
+  let unOrderedList = document.createElement('ul');
+
+  firstDivWithMenuClass.appendChild(unOrderedList);
+
+
+  let menuButton = document.querySelector('.menu-button');
+  firstDivWithMenuClass.classList.add('menu');
+  
+
+  fancyArray.forEach(function(data) {
+    let fancyListItems = document.createElement('li');
+    //console.log(data);
+    fancyListItems.textContent = data;   //I did not understand this
+    unOrderedList.appendChild(fancyListItems);  
+  });
+  
+
+menuButton.addEventListener('click', (e) => {
+  firstDivWithMenuClass.classList.toggle('menu--open');
+});
+
+return firstDivWithMenuClass;
+
+}
+
+
+bigOlMenuContainer.appendChild(fancyMenu(menuItems));
+
+
+
+//stretch
+
+// Close Button
+
+//   Add a close (or 'read') button to each Article component. When clicked the article will disappear.
+
+// * Component Constructor
+  
+//   Create a function that builds Article components. You are not expected to finish this. This goal is simply an exercise in thinking about how you would implement a function that took some data, created a new Article from it, and appended it to the HTML (without actually writing anything in the HTML file). This is a difficult concept to undertake, but even thinking about how you would implement it will give you a better understanding of how we use frameworks in upcoming sprints. 
+
+// * Implement a way to write your own articles using the Component Constructor and some input fields. 
