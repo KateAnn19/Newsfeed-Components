@@ -126,7 +126,7 @@ let getArticles = document.querySelector('.articles');
 //   </div>
 //   Hint: You will need to use createElement more than once here!
 
-function blogMaker(title, date, p1, p2, p3){
+function blogMaker(obj){
   let articleContainer = document.createElement('div');
   let h2Headings = document.createElement('h2');
   let paragraph0 = document.createElement('p');
@@ -142,13 +142,13 @@ function blogMaker(title, date, p1, p2, p3){
   // const buttonOpen = document.createElement('button');
   //----------------------------------------------------------------
 
-  paragraph0.textContent = date;
-  h2Headings.textContent = title; 
+  paragraph0.textContent = obj.date;
+  h2Headings.textContent = obj.title; 
   spanEl.textContent = "OPEN FOR MORE!"
   spanEl.style.fontFamily = "cursive";
-  paragraph1.textContent = p1;
-  paragraph2.textContent = p2;
-  paragraph3.textContent = p3;
+  paragraph1.textContent = obj.firstParagraph;
+  paragraph2.textContent = obj.secondParagraph;
+  paragraph3.textContent = obj.thirdParagraph;
   
 
   articleContainer.classList.add('article');
@@ -224,8 +224,10 @@ function blogMaker(title, date, p1, p2, p3){
 // We know that .map returns a new array with the items transformed (by our callback). We can then do whatever we please with this array.
 data.map(content => {
   // Remember, we always need to return something when we use .map
-  getArticles.appendChild(blogMaker(content.title, content.date, content.firstParagraph, content.secondParagraph, content.thirdParagraph));
+  getArticles.appendChild(blogMaker(content));
 });
+
+
 
 
 //----------------------------------------------------------------------------------------
@@ -260,7 +262,7 @@ data.push(newBlogPost);
 //----------------------------------------------------------------------------------------------------------
 // Do not need to iterate through everything. If you do it will be doubled
 //-------------------------------------------------------------------------------------------------------------
-getArticles.appendChild(blogMaker(newBlogPost.title, newBlogPost.date, newBlogPost.firstParagraph, newBlogPost.secondParagraph, newBlogPost.thirdParagraph));
+getArticles.appendChild(blogMaker(newBlogPost));
 //------------------------------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------------------------------------------
